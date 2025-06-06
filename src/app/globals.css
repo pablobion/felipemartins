@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cores principais */
+  --bg-primary: #80B598;    /* Fundo principal - verde suave */
+  --bg-secondary: #6ca583;  /* Fundo secundário - um pouco mais escuro */
+  --bg-accent: #29863B;     /* Botões e destaques - verde vibrante */
+  
+  /* Variações de destaque */
+  --accent-hover: #207530;  /* Hover estado para botões */
+  --accent-light: #339E46;  /* Versão mais clara do verde de destaque */
+  
+  /* Tons de texto */
+  --text-primary: #ffffff;    /* Texto principal - branco */
+  --text-secondary: #e6e6e6;  /* Texto secundário - branco suave */
+  --text-dark: #1a4025;       /* Texto escuro para contraste em fundos claros */
 }
 
 @theme inline {
@@ -23,4 +34,39 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-[var(--text-primary)];
+  }
+
+  /* Estilos globais para links */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Estilos para headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-[var(--text-primary)] font-bold;
+  }
+
+  /* Estilos para seções */
+  section {
+    @apply relative overflow-hidden;
+  }
+
+  /* Estilos para cards */
+  .card {
+    @apply bg-[var(--bg-secondary)] rounded-lg p-8 transition-all duration-300 shadow-lg;
+  }
+
+  /* Estilos para botões */
+  .btn {
+    @apply inline-block bg-[var(--bg-accent)] text-white font-semibold py-3 px-8 rounded-full hover:bg-[var(--accent-hover)] transition-colors duration-300;
+  }
 }
